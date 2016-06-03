@@ -19,5 +19,7 @@ private:
 
 	SDL_Window* window;
 	SDL_GLContext glContext;
+
+	bool closed;
 };
 
