@@ -1,4 +1,6 @@
 #include "Display.h"
+#include <GL\glew.h>
+#include <iostream>
 
 Display::Display(int width, int height, const std::string& title)
 {
@@ -19,6 +21,14 @@ Display::Display(int width, int height, const std::string& title)
 		SDL_WINDOW_OPENGL);
 
 	glContext = SDL_GL_CreateContext(window);
+
+	GLenum status = glewInit();
+
+	if (status != GLEW_OK) {
+		std::cerr << "Glew failed to initialize" << std::endl;
+	}
+
+	closed = false;
 }
 
 
