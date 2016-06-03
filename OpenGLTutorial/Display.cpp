@@ -39,7 +39,7 @@ Display::~Display()
 	SDL_Quit();
 }
 
-void Display::swapBuffers() 
+void Display::update() 
 {
 	SDL_GL_SwapWindow(window);
 }

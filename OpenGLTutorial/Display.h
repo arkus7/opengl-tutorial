@@ -9,7 +9,7 @@ public:
 	Display(int width, int height, const std::string& title);
 	virtual ~Display();
 
-	void swapBuffers();
+	void update();
 
 private:
 	Display(const Display& other) {}
