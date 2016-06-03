@@ -10,6 +10,8 @@ public:
 	virtual ~Display();
 
 	void update();
+	bool isClosed();
+	void clear(float red, float green, float blue, float alpha);
 
 private:
 	Display(const Display& other) {}
