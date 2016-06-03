@@ -18,7 +18,7 @@ Shader::Shader(const std::string & fileName)
 	glBindAttribLocation(program, 0, "position");
 
 	glLinkProgram(program);
-	checkShaderError(program, GL_LINK_STATUS, true, "Error: Program linking failder");
+	checkShaderError(program, GL_LINK_STATUS, true, "Error: Program linking failed");
 
 	glValidateProgram(program);
 	checkShaderError(program, GL_VALIDATE_STATUS, true, "Error: Program is invalid");
@@ -45,7 +45,7 @@ GLuint Shader::createShader(const std::string& text, GLenum shaderType)
 	GLuint shader = glCreateShader(shaderType);
 
 	if (shader == 0) {
-		std::cerr << "Error: shader creation failder!" << std::endl;
+		std::cerr << "Error: shader creation failed!" << std::endl;
 	}
 
 	const GLchar* shaderSourceStrings[1];
