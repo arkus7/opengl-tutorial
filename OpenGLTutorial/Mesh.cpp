@@ -1,6 +1,7 @@
 #include "Mesh.h"
+#include <GL\glew.h>
 
-Mesh::Mesh()
+Mesh::Mesh(Vertex * vertices, unsigned int numVertices)
 {
 }
 
