@@ -6,11 +6,17 @@
 class Vertex
 {
 public:
-	Vertex(const glm::vec3& position) {
+	Vertex(const glm::vec3& position, const glm::vec2& textureCoord) {
 		this->position = position;
+		this->textureCoord = textureCoord;
 	}
+
+	inline glm::vec3* getPosition() { return &position; }
+	inline glm::vec2* getTextureCoord() { return &textureCoord; }
+
 private:
 	glm::vec3 position;
+	glm::vec2 textureCoord;
 };
 
 class Mesh
@@ -23,6 +29,7 @@ private:
 
 	enum {
 		POSITION_VB,
+		TEXTURE_COORD_VB,
 		NUM_BUFFERS
 	};
 
