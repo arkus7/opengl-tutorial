@@ -2,6 +2,7 @@
 
 #include <string>
 #include <SDL2\SDL.h>
+#include "Camera.h"
 
 class Display
 {
@@ -10,6 +11,7 @@ public:
 	virtual ~Display();
 
 	void update();
+	void handleKeyboarEvent(Camera & camera);
 	bool isClosed();
 	void clear(float red, float green, float blue, float alpha);
 

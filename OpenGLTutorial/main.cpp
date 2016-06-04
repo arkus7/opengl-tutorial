@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
 	unsigned int indices[] = { 0, 1, 2 };
 
 	Mesh mesh(vertices, sizeof(vertices) / sizeof(vertices[0]), indices, sizeof(indices) / sizeof(indices[0]));
-	Mesh mesh2("./res/someworking-ashit.obj");
+	Mesh mesh2("./res/monkey3.obj");
 
 	Shader shader("./res/basicShader");
 	Texture texture("./res/text.jpg");
@@ -48,10 +48,13 @@ int main(int argc, char** argv) {
 		texture.bind(0);
 		shader.update(transform, camera);
 		mesh2.draw();
-
+		
+		display.handleKeyboarEvent(camera);
 		display.update();
 
 		counter += 0.0001f;
+		std::cout << "x = " << camera.getPosition().x << std::endl;
+		std::cout << "z = " << camera.getPosition().z << std::endl;
 	}
 	return 0;
 }

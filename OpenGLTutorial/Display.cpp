@@ -57,6 +57,37 @@ void Display::update()
 	}
 }
 
+void Display::handleKeyboarEvent(Camera& camera)
+{
+	const Uint8 *keyboard_state_array = SDL_GetKeyboardState(NULL);
+	SDL_Event event;
+
+	float amount = 0.015f;
+	SDL_PollEvent(&event);
+	if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
+	{
+		if (keyboard_state_array[SDL_SCANCODE_UP] && !(keyboard_state_array[SDL_SCANCODE_DOWN]))
+		{
+			camera.moveForward(amount);
+		}
+			
+		if (!keyboard_state_array[SDL_SCANCODE_UP] && keyboard_state_array[SDL_SCANCODE_DOWN])
+		{
+			camera.moveForward(-amount);
+		}
+
+		if (keyboard_state_array[SDL_SCANCODE_RIGHT] && !keyboard_state_array[SDL_SCANCODE_LEFT])
+		{
+			camera.moveRight(-amount);
+		}
+			
+		if (!keyboard_state_array[SDL_SCANCODE_RIGHT] && keyboard_state_array[SDL_SCANCODE_LEFT])
+		{
+			camera.moveRight(amount);
+		}
+	}
+}
+
 bool Display::isClosed() {
 	return closed;
 }

@@ -24,6 +24,21 @@ public:
 	{
 	}
 
+	void moveForward(float amount)
+	{
+		position += forward * amount;
+	}
+
+	void moveRight(float amount)
+	{
+		position += glm::cross(up, forward) * amount;
+	}
+
+	glm::vec3 getPosition()
+	{
+		return position;
+	}
+
 private:
 	glm::mat4 perspectiveMatrix;
 	glm::vec3 position;
