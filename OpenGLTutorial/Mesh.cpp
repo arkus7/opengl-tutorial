@@ -28,17 +28,15 @@ Mesh::Mesh(Vertex * vertices, unsigned int numVertices)
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
-	glBindVertexArray(0);
-
 	// TEXTURE COORDS
 
 	glBindBuffer(GL_ARRAY_BUFFER, vertexArrayBuffers[TEXTURE_COORD_VB]);
 	glBufferData(GL_ARRAY_BUFFER, numVertices * sizeof(textureCoords[0]), &textureCoords[0], GL_STATIC_DRAW);
 
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
 
-	glBindVertexArray(1);
+	glBindVertexArray(0);
 }
 
 void Mesh::draw()
