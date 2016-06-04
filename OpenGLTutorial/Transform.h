@@ -29,9 +29,9 @@ public:
 	inline glm::vec3& getRotation() { return rotation; }
 	inline glm::vec3& getScale() { return scale; }
 
-	inline void setPosition(glm::vec3& position) { this->position = position; }
-	inline void setRotation(glm::vec3& rotation) { this->rotation = rotation; }
-	inline void setScale(glm::vec3& scale) { this->scale = scale; }
+	inline void setPosition(const glm::vec3& position) { this->position = position; }
+	inline void setRotation(const glm::vec3& rotation) { this->rotation = rotation; }
+	inline void setScale(const glm::vec3& scale) { this->scale = scale; }
 
 	virtual ~Transform() {}
 private:
