@@ -3,6 +3,7 @@
 #include <string>
 #include <GL/glew.h>
 #include "Transform.h"
+#include "Camera.h"
 
 class Shader
 {
@@ -10,7 +11,7 @@ public:
 	Shader(const std::string& fileName);
 
 	void bind();
-	void update(const Transform& transform);
+	void update(const Transform& transform, const Camera& camera);
 
 	GLuint createShader(const std::string & text, GLenum shaderType);
 
