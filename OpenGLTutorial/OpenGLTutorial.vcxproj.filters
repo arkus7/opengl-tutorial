@@ -27,6 +27,9 @@
     <ClCompile Include="Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="stb_image.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Display.h">
@@ -38,12 +41,15 @@
     <ClInclude Include="Mesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="baseShader.vs">
+    <None Include="res\basicShader.vs">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="baseShader.fs">
+    <None Include="res\basicShader.fs">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
