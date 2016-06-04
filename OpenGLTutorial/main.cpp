@@ -15,11 +15,11 @@ int main(int argc, char** argv) {
 
 	Mesh mesh(vertices, sizeof(vertices) / sizeof(vertices[0]));
 
-	Shader shader("baseShader");
+	Shader shader("./res/basicShader");
 
 	while (!display.isClosed())
 	{
-		display.clear(0.0f, 0.15f, 0.3f, 1.0f);
+		display.clear(0.0f, 0.075f, 0.15f, 1.0f);
 		mesh.draw();
 		shader.bind();
 		display.update();
