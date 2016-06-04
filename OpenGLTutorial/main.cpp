@@ -18,7 +18,7 @@ int main(int argc, char** argv) {
 	Mesh mesh(vertices, sizeof(vertices) / sizeof(vertices[0]));
 
 	Shader shader("./res/basicShader");
-	Texture texture("./res/bricks.jpg");
+	Texture texture("./res/text.jpg");
 	Transform transform;
 
 	float counter = 0.0f;
@@ -39,7 +39,7 @@ int main(int argc, char** argv) {
 
 		display.update();
 
-		counter += 0.001f;
+		counter += 0.0001f;
 	}
 	return 0;
 }
