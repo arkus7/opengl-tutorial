@@ -63,6 +63,7 @@ void Display::handleKeyboarEvent(Camera& camera)
 	SDL_Event event;
 
 	float amount = 0.015f;
+	float angleAmount = 0.0015f;
 	SDL_PollEvent(&event);
 	if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
 	{
@@ -78,12 +79,28 @@ void Display::handleKeyboarEvent(Camera& camera)
 
 		if (keyboard_state_array[SDL_SCANCODE_RIGHT] && !keyboard_state_array[SDL_SCANCODE_LEFT])
 		{
-			camera.moveRight(-amount);
+			camera.moveLeft(-amount);
 		}
 			
 		if (!keyboard_state_array[SDL_SCANCODE_RIGHT] && keyboard_state_array[SDL_SCANCODE_LEFT])
 		{
-			camera.moveRight(amount);
+			camera.moveLeft(amount);
+		}
+
+		if (keyboard_state_array[SDL_SCANCODE_A] && !keyboard_state_array[SDL_SCANCODE_D]) {
+			camera.rotateX(angleAmount);
+		}
+
+		if (!keyboard_state_array[SDL_SCANCODE_A] && keyboard_state_array[SDL_SCANCODE_D]) {
+			camera.rotateX(-angleAmount);
+		}
+
+		if (keyboard_state_array[SDL_SCANCODE_W] && !keyboard_state_array[SDL_SCANCODE_S]) {
+			camera.rotateY(-angleAmount);
+		}
+
+		if (!keyboard_state_array[SDL_SCANCODE_W] && keyboard_state_array[SDL_SCANCODE_S]) {
+			camera.rotateY(angleAmount);
 		}
 	}
 }
