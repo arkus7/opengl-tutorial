@@ -22,10 +22,10 @@ int main(int argc, char** argv) {
 	unsigned int indices[] = { 0, 1, 2 };
 
 	Mesh mesh(vertices, sizeof(vertices) / sizeof(vertices[0]), indices, sizeof(indices) / sizeof(indices[0]));
-	Mesh mesh2("./res/kijanka.obj");
+	Mesh mesh2("./res/fish.obj");
 
 	Shader shader("./res/basicShader");
-	Texture texture("./res/kijanka.jpg");
+	Texture texture("./res/fish.jpg");
 	Transform transform;
 	Camera camera(glm::vec3(0, 0, -8), 70.0f, (float) WIDTH / (float) HEIGHT, 0.1f, 1000.0f);
 
@@ -39,6 +39,7 @@ int main(int argc, char** argv) {
 		float cosCounter = cos(counter);
 
 		transform.getPosition().x = sinCounter;
+		transform.getPosition().y = cosCounter;
 		transform.getPosition().z = cosCounter;
 		//transform.getRotation().z = counter;
 		//transform.getRotation().y = counter;
