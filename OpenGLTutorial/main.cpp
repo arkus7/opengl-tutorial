@@ -22,10 +22,10 @@ int main(int argc, char** argv) {
 	unsigned int indices[] = { 0, 1, 2 };
 
 	Mesh mesh(vertices, sizeof(vertices) / sizeof(vertices[0]), indices, sizeof(indices) / sizeof(indices[0]));
-	Mesh mesh2("./res/monkey3.obj");
+	Mesh mesh2("./res/kijanka.obj");
 
 	Shader shader("./res/basicShader");
-	Texture texture("./res/text.jpg");
+	Texture texture("./res/kijanka.jpg");
 	Transform transform;
 	Camera camera(glm::vec3(0, 0, -8), 70.0f, (float) WIDTH / (float) HEIGHT, 0.1f, 1000.0f);
 
@@ -40,9 +40,9 @@ int main(int argc, char** argv) {
 
 		transform.getPosition().x = sinCounter;
 		transform.getPosition().z = cosCounter;
-		transform.getRotation().z = counter;
-		transform.getRotation().y = counter;
-		transform.getRotation().x = counter;
+		//transform.getRotation().z = counter;
+		//transform.getRotation().y = counter;
+		//transform.getRotation().x = counter;
 
 		shader.bind();
 		texture.bind(0);
@@ -52,7 +52,7 @@ int main(int argc, char** argv) {
 		display.handleKeyboarEvent(camera);
 		display.update();
 
-		counter += 0.0001f;
+		counter += 0.001f;
 		std::cout << "x = " << camera.getPosition().x << std::endl;
 		std::cout << "z = " << camera.getPosition().z << std::endl;
 	}
