@@ -23,12 +23,14 @@ public:
 private:
 	static const unsigned int NUM_SHADERS = 2;
 
+	void initModelToCameraMatrix();
+
 	enum {
 		TRANSFORM_UNIFORM,
-
+		MODEL_TO_CAMERA_UNIFORM,
 		NUM_UNIFORMS
 	};
-
+	float modelToCameraMatrix[16];
 	GLuint program;
 	GLuint shaders[NUM_SHADERS];
 	GLuint uniforms[NUM_UNIFORMS];

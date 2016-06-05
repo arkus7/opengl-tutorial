@@ -25,7 +25,19 @@ Shader::Shader(const std::string & fileName)
 	checkShaderError(program, GL_VALIDATE_STATUS, true, "Error: Program is invalid");
 
 	uniforms[TRANSFORM_UNIFORM] = glGetUniformLocation(program, "transformMatrix");
+	uniforms[MODEL_TO_CAMERA_UNIFORM] = glGetUniformLocation(program, "modelToCameraMatrix");
 
+	initModelToCameraMatrix();
+}
+
+void Shader::initModelToCameraMatrix()
+{
+	memset(modelToCameraMatrix, 0, sizeof(float) * 16);
+	modelToCameraMatrix[0] = 0.5;
+	modelToCameraMatrix[5] = 0.5;
+	modelToCameraMatrix[10] = 0.5;
+	modelToCameraMatrix[14] = -0.75;
+	modelToCameraMatrix[15] = 1.0f;
 }
 
 Shader::~Shader()
@@ -47,6 +59,7 @@ void Shader::update(const Transform & transform, const Camera & camera)
 {
 	glm::mat4 model = camera.getViewProjection() * transform.getModel();
 	glUniformMatrix4fv(uniforms[TRANSFORM_UNIFORM], 1, GL_FALSE, &model[0][0]);
+	glUniformMatrix4fv(uniforms[MODEL_TO_CAMERA_UNIFORM], 1, GL_FALSE, &modelToCameraMatrix[0]);
 }
 
 GLuint Shader::createShader(const std::string& text, GLenum shaderType)
