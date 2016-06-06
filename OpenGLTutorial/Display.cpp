@@ -62,45 +62,47 @@ void Display::handleKeyboarEvent(Camera& camera)
 	const Uint8 *keyboard_state_array = SDL_GetKeyboardState(NULL);
 	SDL_Event event;
 
-	float amount = 0.15f;
-	float angleAmount = 0.08f;
-	SDL_PollEvent(&event);
-	if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
+	float amount = 0.08f;
+	float angleAmount = 0.008f;
+	while (SDL_PollEvent(&event))
 	{
-		if (keyboard_state_array[SDL_SCANCODE_UP] && !(keyboard_state_array[SDL_SCANCODE_DOWN]))
+		if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
 		{
-			camera.moveForward(amount);
-		}
-			
-		if (!keyboard_state_array[SDL_SCANCODE_UP] && keyboard_state_array[SDL_SCANCODE_DOWN])
-		{
-			camera.moveForward(-amount);
-		}
+			if (keyboard_state_array[SDL_SCANCODE_UP] && !(keyboard_state_array[SDL_SCANCODE_DOWN]))
+			{
+				camera.moveForward(amount);
+			}
 
-		if (keyboard_state_array[SDL_SCANCODE_RIGHT] && !keyboard_state_array[SDL_SCANCODE_LEFT])
-		{
-			camera.moveLeft(-amount);
-		}
-			
-		if (!keyboard_state_array[SDL_SCANCODE_RIGHT] && keyboard_state_array[SDL_SCANCODE_LEFT])
-		{
-			camera.moveLeft(amount);
-		}
+			if (!keyboard_state_array[SDL_SCANCODE_UP] && keyboard_state_array[SDL_SCANCODE_DOWN])
+			{
+				camera.moveForward(-amount);
+			}
 
-		if (keyboard_state_array[SDL_SCANCODE_A] && !keyboard_state_array[SDL_SCANCODE_D]) {
-			camera.rotateX(angleAmount);
-		}
+			if (keyboard_state_array[SDL_SCANCODE_RIGHT] && !keyboard_state_array[SDL_SCANCODE_LEFT])
+			{
+				camera.moveLeft(-amount);
+			}
 
-		if (!keyboard_state_array[SDL_SCANCODE_A] && keyboard_state_array[SDL_SCANCODE_D]) {
-			camera.rotateX(-angleAmount);
-		}
+			if (!keyboard_state_array[SDL_SCANCODE_RIGHT] && keyboard_state_array[SDL_SCANCODE_LEFT])
+			{
+				camera.moveLeft(amount);
+			}
 
-		if (keyboard_state_array[SDL_SCANCODE_W] && !keyboard_state_array[SDL_SCANCODE_S]) {
-			camera.rotateY(-angleAmount);
-		}
+			if (keyboard_state_array[SDL_SCANCODE_A] && !keyboard_state_array[SDL_SCANCODE_D]) {
+				camera.rotateX(angleAmount);
+			}
 
-		if (!keyboard_state_array[SDL_SCANCODE_W] && keyboard_state_array[SDL_SCANCODE_S]) {
-			camera.rotateY(angleAmount);
+			if (!keyboard_state_array[SDL_SCANCODE_A] && keyboard_state_array[SDL_SCANCODE_D]) {
+				camera.rotateX(-angleAmount);
+			}
+
+			if (keyboard_state_array[SDL_SCANCODE_W] && !keyboard_state_array[SDL_SCANCODE_S]) {
+				camera.rotateY(-angleAmount);
+			}
+
+			if (!keyboard_state_array[SDL_SCANCODE_W] && keyboard_state_array[SDL_SCANCODE_S]) {
+				camera.rotateY(angleAmount);
+			}
 		}
 	}
 }

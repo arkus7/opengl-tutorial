@@ -27,12 +27,12 @@ int main(int argc, char** argv) {
 		display.clear(0.0f, 0.075f, 0.15f, 1.0f);
 
 		float sinCounter = sinf(counter);
-		float cosCounter = cos(counter);
+		float cosCounter = cosf(counter);
 
 		transform.getPosition().x = sinCounter;
 		transform.getPosition().y = cosCounter;
 		transform.getPosition().z = cosCounter;
-		transform.getRotation().y = sinf(counter)/2;
+		transform.getRotation().y = sinCounter/4;
 
 		shader.bind();
 		texture.bind(0);
