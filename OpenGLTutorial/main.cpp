@@ -11,17 +11,8 @@
 #define HEIGHT 600
 
 int main(int argc, char** argv) {
-	Display display(WIDTH, HEIGHT, "Hello World");
+	Display display(WIDTH, HEIGHT, "Fish - GRK");
 
-	Vertex vertices[] = {
-		Vertex(glm::vec3(-0.5f, -0.5f, 0), glm::vec2(0.0, 0.0)),
-		Vertex(glm::vec3(0, 0.5, 0), glm::vec2(0.5, 1.0)),
-		Vertex(glm::vec3(0.5, -0.5, 0), glm::vec2(1.0, 0.0)),
-	};
-
-	unsigned int indices[] = { 0, 1, 2 };
-
-	Mesh mesh(vertices, sizeof(vertices) / sizeof(vertices[0]), indices, sizeof(indices) / sizeof(indices[0]));
 	Mesh mesh2("./res/fish.obj");
 
 	Shader shader("./res/basicShader");
@@ -41,9 +32,7 @@ int main(int argc, char** argv) {
 		transform.getPosition().x = sinCounter;
 		transform.getPosition().y = cosCounter;
 		transform.getPosition().z = cosCounter;
-		//transform.getRotation().z = counter;
-		//transform.getRotation().y = counter;
-		//transform.getRotation().x = counter;
+		transform.getRotation().y = sinf(counter)/2;
 
 		shader.bind();
 		texture.bind(0);
@@ -54,8 +43,8 @@ int main(int argc, char** argv) {
 		display.update();
 
 		counter += 0.001f;
-		std::cout << "x = " << camera.getPosition().x << std::endl;
-		std::cout << "z = " << camera.getPosition().z << std::endl;
+		//std::cout << "x = " << camera.getPosition().x << std::endl;
+		//std::cout << "z = " << camera.getPosition().z << std::endl;
 	}
 	return 0;
 }
