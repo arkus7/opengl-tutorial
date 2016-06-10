@@ -59,7 +59,7 @@ void Shader::update(const Transform & transform, const Camera & camera)
 {
 	glm::mat4 model = camera.getViewProjection() * transform.getModel();
 	glUniformMatrix4fv(uniforms[TRANSFORM_UNIFORM], 1, GL_FALSE, &model[0][0]);
-	glUniformMatrix4fv(uniforms[MODEL_TO_CAMERA_UNIFORM], 1, GL_FALSE, &modelToCameraMatrix[0]);
+	glUniformMatrix4fv(uniforms[MODEL_TO_CAMERA_UNIFORM], 1, GL_FALSE, &camera.getViewProjection()[0][0]);
 }
 
 GLuint Shader::createShader(const std::string& text, GLenum shaderType)

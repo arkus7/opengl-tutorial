@@ -1,6 +1,7 @@
 #include "Display.h"
 #include <GL\glew.h>
 #include <iostream>
+#include <SDL2\SDL.h>
 
 Display::Display(int width, int height, const std::string& title)
 {
@@ -62,8 +63,8 @@ void Display::handleKeyboarEvent(Camera& camera)
 	const Uint8 *keyboard_state_array = SDL_GetKeyboardState(NULL);
 	SDL_Event event;
 
-	float amount = 0.03f;
-	float angleAmount = 0.004f;
+	float amount = 0.2f;
+	float angleAmount = 0.04f;
 	SDL_PollEvent(&event);
 	if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
 	{

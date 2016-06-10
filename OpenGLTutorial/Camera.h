@@ -52,6 +52,10 @@ public:
 		up = glm::vec3(glm::normalize(rotation * glm::vec4(up, 0.0)));
 	}
 
+	void setPosition(glm::vec3 position) {
+		this->position = position;
+	}
+
 	glm::vec3 getPosition()
 	{
 		return position;

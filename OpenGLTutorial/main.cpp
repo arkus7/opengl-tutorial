@@ -11,23 +11,14 @@
 #define HEIGHT 600
 
 int main(int argc, char** argv) {
-	Display display(WIDTH, HEIGHT, "Hello World");
+	Display display(WIDTH, HEIGHT, "Fish");
 
-	Vertex vertices[] = {
-		Vertex(glm::vec3(-0.5f, -0.5f, 0), glm::vec2(0.0, 0.0)),
-		Vertex(glm::vec3(0, 0.5, 0), glm::vec2(0.5, 1.0)),
-		Vertex(glm::vec3(0.5, -0.5, 0), glm::vec2(1.0, 0.0)),
-	};
-
-	unsigned int indices[] = { 0, 1, 2 };
-
-	Mesh mesh(vertices, sizeof(vertices) / sizeof(vertices[0]), indices, sizeof(indices) / sizeof(indices[0]));
-	Mesh mesh2("./res/fish.obj");
+	Mesh fish("./res/fish.obj");
 
 	Shader shader("./res/basicShader");
 	Texture texture("./res/fish.jpg");
 	Transform transform;
-	Camera camera(glm::vec3(0, 0, -8), 70.0f, (float) WIDTH / (float) HEIGHT, 0.1f, 1000.0f);
+	Camera camera(glm::vec3(0, 0, -5), 70.0f, (float) WIDTH / (float) HEIGHT, 0.1f, 1000.0f);
 
 	float counter = 0.0f;
 
@@ -41,21 +32,20 @@ int main(int argc, char** argv) {
 		transform.getPosition().x = sinCounter;
 		transform.getPosition().y = cosCounter;
 		transform.getPosition().z = cosCounter;
-		//transform.getRotation().z = counter;
-		//transform.getRotation().y = counter;
-		//transform.getRotation().x = counter;
+		transform.getRotation().y = sinCounter / 4;
+
+		camera.moveLeft(-0.002f);
+		camera.rotateX(0.0004f);
 
 		shader.bind();
 		texture.bind(0);
 		shader.update(transform, camera);
-		mesh2.draw();
+		fish.draw();
 		
 		display.handleKeyboarEvent(camera);
 		display.update();
 
 		counter += 0.001f;
-		std::cout << "x = " << camera.getPosition().x << std::endl;
-		std::cout << "z = " << camera.getPosition().z << std::endl;
 	}
 	return 0;
 }
